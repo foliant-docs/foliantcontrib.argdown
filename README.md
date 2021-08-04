@@ -2,7 +2,7 @@
 
 # Argdown Diagrams Preprocessor for Foliant
 
-[Argdown](https://argdown.org/) is modeling language for creating argument maps. This preprocessor converts Argdown diagram definitions in source markdown files and converts them into images on the fly during project build.
+[Argdown](https://argdown.org/) is a modeling language for creating argument maps. This preprocessor takes Argdown diagram definitions in source markdown files and converts them into images on the fly during project build.
 
 This preprocessor uses [Argdown Image Export package](https://github.com/christianvoigt/argdown/tree/master/packages/argdown-image-export) tool by [Christian Voigt](https://github.com/christianvoigt) to convert diagrams into images.
 
@@ -39,7 +39,7 @@ preprocessors:
         as_image: true
         params:
             no-title: true
-        `fix_svg_size`: false
+        fix_svg_size: false
 ```
 
 `cache_dir`
