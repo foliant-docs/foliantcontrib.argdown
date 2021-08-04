@@ -28,6 +28,7 @@ class Preprocessor(BasePreprocessorExt):
         'fix_svg_size': False,
     }
     tags = ('argdown',)
+    embeddable = ('svg', 'dot', 'graphml')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -69,11 +70,12 @@ class Preprocessor(BasePreprocessorExt):
 
     def _get_result(self, diagram_path: PosixPath, config: CombinedOptions):
         '''Get either image ref or raw image code depending on as_image option'''
-        if config['format'] != 'svg' or config['as_image']:
-            return f'![{config.get("caption", "")}]({diagram_path.absolute().as_posix()})'
-        else:
+        if config['format'] in self.embeddable and not config['as_image']:
             with open(diagram_path, 'r') as f:
-                return f'<div>{f.read()}</div>'
+                source = f.read()
+                return f'<div>{source}</div>' if config['format'] == 'svg' else source
+        else:
+            return f'![{config.get("caption", "")}]({diagram_path.absolute().as_posix()})'
 
     def _fix_svg_size(self, svg_path: PosixPath):
         '''insert 100% instead of hardcoded height and width attributes'''

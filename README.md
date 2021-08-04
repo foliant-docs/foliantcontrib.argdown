@@ -54,7 +54,7 @@ preprocessors:
 :   Output format of the diagram image. Available formats at the time of writing: `dot`, `graphml`, `svg`, `pdf`, `png`, `jpg`, `webp`. Default: `png`
 
 `as_image`
-:   If `true` — inserts the diagram into the document as Markdown-image. If `false` — inserts the svg code of the diagram directly into the document (works only for `svg` format). Default: `true`
+:   If `true` — inserts the diagram into the document as Markdown-image. If `false` — inserts the source code of the diagram directly into the document (works only for `svg`, `dot` and `graphml` formats). Default: `true`
 
 `params`
 :   Params passed to the Argdown CLI map tool. Value of this option must be a YAML-mapping. Params which require values should be specified as `param: value`; params which don't require values should be specified as `param: true`.
